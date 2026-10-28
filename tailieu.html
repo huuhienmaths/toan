@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tài liệu Toán học | Trung tâm Toán</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #183153;
+      line-height: 1.6;
+    }
+    header {
+      background: #123b70;
+      color: white;
+      padding: 22px 7%;
+    }
+    header a { color: white; text-decoration: none; }
+    main { max-width: 1000px; margin: 35px auto; padding: 0 20px; }
+    .intro, .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px #193b7010;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .card h2 { margin-top: 0; color: #1769d2; }
+    .lesson {
+      display: block;
+      padding: 12px;
+      border: 1px solid #dce5f2;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #174f99;
+      margin-top: 10px;
+    }
+    .lesson:hover { background: #edf5ff; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #53657d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Trang chủ Trung tâm Toán</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Thư viện tài liệu Toán học</h1>
+      <p>Chọn lớp để xem bài học, chuyên đề và bài tập ôn luyện.</p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Toán lớp 10</h2>
+        <p>Kiến thức nền tảng và bài tập luyện tập.</p>
+        <a class="lesson" href="toan-lop-10/menh-de-tap-hop.html">
+          Mệnh đề và tập hợp →
+        </a>
+      </section>
+
+      <section class="card">
+        <h2>Toán lớp 11</h2>
+        <p>Chuyên đề và bài tập theo chương trình học.</p>
+        <p>Đang cập nhật tài liệu.</p>
+      </section>
+
+      <section class="card">
+        <h2>Toán lớp 12</h2>
+        <p>Ôn tập kiến thức và luyện đề tốt nghiệp THPT.</p>
+        <p>Đang cập nhật tài liệu.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © Trung tâm Toán học
+  </footer>
+</body>
+</html>
