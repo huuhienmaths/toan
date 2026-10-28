@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trung tâm Toán học</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #183153;
+      background: #f4f7fc;
+      line-height: 1.6;
+    }
+    header {
+      background: #123b70;
+      color: white;
+      padding: 22px 7%;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+    }
+    .hero {
+      padding: 65px 7%;
+      background: linear-gradient(120deg, #e2efff, #ffffff);
+    }
+    .hero h1 { font-size: 38px; line-height: 1.25; }
+    .hero p { max-width: 620px; }
+    .button {
+      display: inline-block;
+      background: #1769d2;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    main { padding: 30px 7% 55px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 5px 20px #193b7010;
+    }
+    footer {
+      text-align: center;
+      padding: 22px;
+      background: #123b70;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 29px; }
+      nav a { margin-left: 0; margin-right: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>TRUNG TÂM TOÁN HỌC</strong>
+      <div>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#chuong-trinh">Chương trình học</a>
+        <a href="#lien-he">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
 
+  <section class="hero" id="gioi-thieu">
+    <h1>Vững kiến thức Toán<br>Chinh phục mục tiêu</h1>
+    <p>
+      Đồng hành cùng học sinh lớp 10, 11, 12 trong quá trình
+      củng cố kiến thức, rèn luyện kỹ năng và ôn tập thi tốt nghiệp THPT.
+    </p>
+    <a class="button" href="#chuong-trinh">Khám phá chương trình học</a>
+  </section>
+
+  <main>
+    <h2 id="chuong-trinh">Chương trình Toán THPT</h2>
+    <div class="cards">
+      <section class="card">
+        <h3>Toán lớp 10</h3>
+        <p>Củng cố kiến thức nền tảng, mệnh đề, tập hợp, hàm số và hình học.</p>
+      </section>
+      <section class="card">
+        <h3>Toán lớp 11</h3>
+        <p>Rèn luyện tư duy, hàm số lượng giác, dãy số, giới hạn và hình học.</p>
+      </section>
+      <section class="card">
+        <h3>Toán lớp 12</h3>
+        <p>Hệ thống kiến thức, luyện đề và chuẩn bị cho kỳ thi tốt nghiệp THPT.</p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:24px" id="lien-he">
+      <h2>Thông tin liên hệ</h2>
+      <p>Địa chỉ: Bổ sung địa chỉ trung tâm</p>
+      <p>Điện thoại: Bổ sung số điện thoại liên hệ</p>
+      <p>Thời gian học: Cập nhật lịch học của trung tâm</p>
+    </section>
+  </main>
+
+  <footer>
+    © Trung tâm Toán học | Website học tập và hỗ trợ học sinh THPT
+  </footer>
+</body>
+</html>
