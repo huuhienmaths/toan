@@ -1,123 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trung tâm Toán học</title>
+  <meta name="description" content="Trung tâm dạy thêm môn Toán lớp 10, 11, 12. Học chắc kiến thức, luyện tập hiệu quả, tự tin thi tốt nghiệp THPT.">
   <style>
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: #183153;
-      background: #f4f7fc;
-      line-height: 1.6;
+      color: #203047;
+      line-height: 1.7;
+      background: #f5f8ff;
     }
+    a { color: inherit; text-decoration: none; }
     header {
-      background: #123b70;
-      color: white;
-      padding: 22px 7%;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 12px #153d6b12;
     }
     nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 12px;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-    }
+    .logo { font-size: 21px; font-weight: bold; color: #1458b5; }
+    .menu { display: flex; gap: 17px; flex-wrap: wrap; font-size: 14px; }
+    .menu a:hover { color: #1674df; }
     .hero {
-      padding: 65px 7%;
-      background: linear-gradient(120deg, #e2efff, #ffffff);
+      padding: 75px 20px;
+      background: linear-gradient(135deg, #e7f1ff, #ffffff);
+      text-align: center;
     }
-    .hero h1 { font-size: 38px; line-height: 1.25; }
-    .hero p { max-width: 620px; }
+    .hero h1 {
+      color: #124d9d;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.25;
+      margin: 0 0 18px;
+    }
+    .hero p { max-width: 650px; margin: 0 auto 25px; color: #50627b; }
     .button {
       display: inline-block;
+      padding: 12px 22px;
+      border-radius: 9px;
       background: #1769d2;
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 12px;
+      font-weight: bold;
+      margin: 5px;
     }
-    main { padding: 30px 7% 55px; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+    .button:hover { background: #0d4fa9; }
+    .button.light { background: white; color: #1769d2; border: 1px solid #1769d2; }
+    section { max-width: 1100px; margin: auto; padding: 55px 20px; }
+    .section-title { text-align: center; margin: 0 0 12px; color: #124d9d; font-size: 30px; }
+    .section-intro { text-align: center; color: #63738a; margin: 0 auto 30px; max-width: 680px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
     .card {
       background: white;
       border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 5px 20px #193b7010;
+      padding: 24px;
+      box-shadow: 0 5px 22px #183a6510;
+      border: 1px solid #e8eef8;
     }
-    footer {
-      text-align: center;
-      padding: 22px;
-      background: #123b70;
-      color: white;
+    .card h3 { color: #175bb2; margin-top: 0; }
+    .grade { font-size: 32px; font-weight: bold; color: #1769d2; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #e8f2ff;
+      color: #175bb2;
+      font-size: 12px;
+      margin-bottom: 10px;
     }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 29px; }
-      nav a { margin-left: 0; margin-right: 12px; }
+    .lesson-link { color: #1769d2; font-weight: bold; }
+    .lesson-link:hover { text-decoration: underline; }
+    .about {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .contact { background: #eaf3ff; border-radius: 16px; padding: 30px; text-align: center; }
+    footer { background: #123b70; color: #ffffff; text-align: center; padding: 25px 20px; }
+    footer p { margin: 5px; }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+      nav { justify-content: center; }
+      .menu { justify-content: center; }
+      .hero { padding: 55px 18px; }
+      section { padding: 40px 18px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <strong>TRUNG TÂM TOÁN HỌC</strong>
-      <div>
-        <a href="#gioi-thieu">Giới thiệu</a>
-        <a href="#chuong-trinh">Chương trình học</a>
-        <a href="#lien-he">Liên hệ</a>
-      </div>
-    </nav>
-  </header>
 
-  <section class="hero" id="gioi-thieu">
-    <h1>Vững kiến thức Toán<br>Chinh phục mục tiêu</h1>
+<header>
+  <nav>
+    <a class="logo" href="#trang-chu">📘 TRUNG TÂM TOÁN HỌC</a>
+    <div class="menu">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#chuong-trinh">Chương trình học</a>
+      <a href="#tai-lieu">Tài liệu</a>
+      <a href="#lien-he">Liên hệ</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="trang-chu">
+    <h1>Học Toán vững vàng<br>Chinh phục tương lai</h1>
     <p>
-      Đồng hành cùng học sinh lớp 10, 11, 12 trong quá trình
-      củng cố kiến thức, rèn luyện kỹ năng và ôn tập thi tốt nghiệp THPT.
+      Đồng hành cùng học sinh lớp 10, 11, 12.
+      Hệ thống kiến thức, rèn luyện kỹ năng giải bài tập
+      và chuẩn bị cho các kỳ thi quan trọng.
     </p>
-    <a class="button" href="#chuong-trinh">Khám phá chương trình học</a>
+    <a class="button" href="#chuong-trinh">Xem chương trình học</a>
+    <a class="button light" href="#tai-lieu">Xem tài liệu Toán</a>
+  </div>
+
+  <section id="gioi-thieu">
+    <h2 class="section-title">Giới thiệu trung tâm</h2>
+    <p class="section-intro">
+      Nơi học sinh củng cố kiến thức, phát triển tư duy
+      và từng bước nâng cao kết quả học tập môn Toán.
+    </p>
+    <div class="about">
+      <h3>Phương pháp học tập</h3>
+      <ul>
+        <li>Ôn tập kiến thức nền tảng theo từng chuyên đề.</li>
+        <li>Hướng dẫn phương pháp giải bài tập từ cơ bản đến nâng cao.</li>
+        <li>Luyện tập, chữa bài và hệ thống các dạng toán thường gặp.</li>
+        <li>Ôn tập theo chương trình học và mục tiêu của từng học sinh.</li>
+      </ul>
+      <p><strong>Giáo viên phụ trách:</strong> [Điền tên giáo viên]</p>
+      <p><strong>Địa điểm:</strong> [Điền địa chỉ trung tâm]</p>
+    </div>
   </section>
 
-  <main>
-    <h2 id="chuong-trinh">Chương trình Toán THPT</h2>
-    <div class="cards">
-      <section class="card">
-        <h3>Toán lớp 10</h3>
-        <p>Củng cố kiến thức nền tảng, mệnh đề, tập hợp, hàm số và hình học.</p>
-      </section>
-      <section class="card">
-        <h3>Toán lớp 11</h3>
-        <p>Rèn luyện tư duy, hàm số lượng giác, dãy số, giới hạn và hình học.</p>
-      </section>
-      <section class="card">
-        <h3>Toán lớp 12</h3>
-        <p>Hệ thống kiến thức, luyện đề và chuẩn bị cho kỳ thi tốt nghiệp THPT.</p>
-      </section>
+  <section id="chuong-trinh">
+    <h2 class="section-title">Chương trình học</h2>
+    <p class="section-intro">
+      Lựa chọn khối lớp để xem nội dung học tập và tài liệu.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Nền tảng</span>
+        <div class="grade">Lớp 10</div>
+        <h3>Củng cố kiến thức cơ bản</h3>
+        <p>Học theo chuyên đề, rèn kỹ năng biến đổi và giải toán.</p>
+        <a class="lesson-link" href="#tai-lieu-10">Xem tài liệu lớp 10 →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Phát triển</span>
+        <div class="grade">Lớp 11</div>
+        <h3>Nâng cao tư duy toán học</h3>
+        <p>Hệ thống kiến thức, luyện tập các dạng bài theo từng chương.</p>
+        <a class="lesson-link" href="#tai-lieu-11">Xem tài liệu lớp 11 →</a>
+      </div>
+      <div class="card">
+        <span class="tag">Ôn thi</span>
+        <div class="grade">Lớp 12</div>
+        <h3>Ôn tập và luyện đề</h3>
+        <p>Ôn tập kiến thức lớp 12, luyện đề và chuẩn bị cho kỳ thi tốt nghiệp THPT.</p>
+        <a class="lesson-link" href="#tai-lieu-12">Xem tài liệu lớp 12 →</a>
+      </div>
     </div>
+  </section>
 
-    <section class="card" style="margin-top:24px" id="lien-he">
-          <h2>Thông tin liên hệ</h2>
-      <p>Địa chỉ: Bổ sung địa chỉ trung tâm</p>
-      <p>Điện thoại: Bổ sung số điện thoại liên hệ</p>
-      <p>Thời gian học: Cập nhật lịch học của trung tâm</p>
-      <p><a href="tailieu.html">Tài liệu học tập</a></p>
-    </section>
-  </main>
+  <section id="tai-lieu">
+    <h2 class="section-title">Thư viện tài liệu Toán</h2>
+    <p class="section-intro">
+      Bài học, đề ôn tập và tài liệu dành cho học sinh.
+    </p>
+    <div class="grid">
+      <div class="card" id="tai-lieu-10">
+        <h3>📗 Tài liệu Toán lớp 10</h3>
+        <p><strong>Chuyên đề:</strong> Mệnh đề và tập hợp</p>
+        <p>Ôn tập lý thuyết, ví dụ và bài tập thực hành.</p>
+        <a class="lesson-link" href="toan-lop-10/menh-de-tap-hop.html">Mở bài học →</a>
+        <p><em>Các bài học mới sẽ được cập nhật tại đây.</em></p>
+      </div>
+      <div class="card" id="tai-lieu-11">
+        <h3>📘 Tài liệu Toán lớp 11</h3>
+        <p>Chuyên đề, bài tập và đề ôn tập theo chương trình học.</p>
+        <p><em>Đang cập nhật tài liệu.</em></p>
+      </div>
+      <div class="card" id="tai-lieu-12">
+        <h3>📙 Tài liệu Toán lớp 12</h3>
+        <p>Chuyên đề trọng tâm và tài liệu luyện thi tốt nghiệp THPT.</p>
+        <p><em>Đang cập nhật tài liệu.</em></p>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    © Trung tâm Toán học | Website học tập và hỗ trợ học sinh THPT
-  </footer>
+  <section id="lien-he">
+    <div class="contact">
+      <h2 class="section-title">Liên hệ với trung tâm</h2>
+      <p>Liên hệ để tìm hiểu chương trình học và lịch học phù hợp.</p>
+      <p><strong>Địa chỉ:</strong> [Điền địa chỉ]</p>
+      <p><strong>Điện thoại:</strong> [Điền số điện thoại]</p>
+      <p><strong>Facebook:</strong> [Điền đường dẫn trang Facebook]</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>TRUNG TÂM TOÁN HỌC</strong></p>
+  <p>Đồng hành cùng học sinh lớp 10, 11, 12</p>
+  <p>© 2026 - Website trung tâm</p>
+</footer>
+
 </body>
 </html>
