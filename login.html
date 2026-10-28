@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập / Đăng ký</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 32px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding: 5px;
+      background: #f1f5f9;
+      border-radius: 10px;
+    }
+
+    .tab {
+      flex: 1;
+      border: none;
+      padding: 11px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 15px;
+      background: transparent;
+      color: #475569;
+    }
+
+    .tab.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      color: #334155;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .note {
+      margin-top: 18px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Xin chào!</h1>
+    <p class="subtitle">Đăng nhập hoặc tạo tài khoản mới</p>
+
+    <div class="tabs">
+      <button class="tab active" id="loginTab" type="button">
+        Đăng nhập
+      </button>
+      <button class="tab" id="registerTab" type="button">
+        Đăng ký
+      </button>
+    </div>
+
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <form id="authForm">
+      <div class="field hidden" id="nameField">
+        <label for="name">Họ và tên</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          placeholder="Nhập họ và tên"
+        >
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="example@email.com"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label for="password">Mật khẩu</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Nhập mật khẩu"
+          required
+        >
+      </div>
+
+      <button class="submit-btn" id="submitBtn" type="submit">
+        Đăng nhập
+      </button>
+    </form>
+
+    <p class="note">
+      Bản thử nghiệm. Không sử dụng mật khẩu thật hoặc thông tin nhạy cảm.
+    </p>
+  </main>
+
+  <script>
+    // Dán URL Web app Apps Script của bạn vào giữa hai dấu nháy.
+    const API_URL = "DAN_URL_APPS_SCRIPT_CUA_BAN_VAO_DAY";
+
+    let mode = "login";
+
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const nameField = document.getElementById("nameField");
+    const nameInput = document.getElementById("name");
+    const passwordInput = document.getElementById("password");
+    const submitBtn = document.getElementById("submitBtn");
+    const message = document.getElementById("message");
+    const authForm = document.getElementById("authForm");
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = "message " + type;
+    }
+
+    function switchMode(newMode) {
+      mode = newMode;
+      const isRegister = mode === "register";
+
+      loginTab.classList.toggle("active", !isRegister);
+      registerTab.classList.toggle("active", isRegister);
+      nameField.classList.toggle("hidden", !isRegister);
+      nameInput.required = isRegister;
+      passwordInput.autocomplete = isRegister
+        ? "new-password"
+        : "current-password";
+      submitBtn.textContent = isRegister ? "Tạo tài khoản" : "Đăng nhập";
+      message.className = "message";
+      message.textContent = "";
+    }
+
+    loginTab.addEventListener("click", () => switchMode("login"));
+    registerTab.addEventListener("click", () => switchMode("register"));
+
+    authForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = passwordInput.value;
+      const name = nameInput.value.trim();
+
+      if (mode === "login") {
+        showMessage(
+          "Chức năng đăng nhập chưa được kết nối. Bản Apps Script hiện tại chỉ lưu họ tên và email.",
+          "error"
+        );
+        return;
+      }
+
+      if (!name || !email || !password) {
+        showMessage("Vui lòng nhập đầy đủ thông tin.", "error");
+        return;
+      }
+
+      if (API_URL === "DAN_URL_APPS_SCRIPT_CUA_BAN_VAO_DAY") {
+        showMessage("Bạn chưa cấu hình URL Apps Script.", "error");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Đang gửi...";
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            action: "register",
+            name: name,
+            email: email
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showMessage(
+            "Đăng ký thành công! Thông tin đã được gửi đến Google Sheets. Bạn có thể đăng nhập sau khi chức năng đăng nhập được thiết lập.",
+            "success"
+          );
+          authForm.reset();
+        } else {
+          showMessage(result.message || "Đăng ký chưa thành công.", "error");
+        }
+      } catch (error) {
+        showMessage(
+          "Không nhận được phản hồi từ máy chủ. Hãy kiểm tra URL Apps Script và quyền triển khai.",
+          "error"
+        );
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Tạo tài khoản";
+      }
+    });
+  </script>
+</body>
+</html>
