@@ -4,280 +4,606 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trung tâm Toán học Hiền</title>
-  <meta name="description" content="Trung tâm dạy thêm môn Toán lớp 10, 11, 12. Học chắc kiến thức, luyện tập hiệu quả, tự tin thi tốt nghiệp THPT.">
+  <title>Trung tâm Toán học | Toán 10 - 11 - 12</title>
+  <meta name="description" content="Trung tâm dạy thêm Toán lớp 10, 11, 12. Học chắc kiến thức, rèn tư duy, nâng cao kết quả học tập.">
+
   <style>
-
-/* Khu vực đăng nhập/đăng ký góc phải */
-.auth-buttons {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
-}
-
-.auth-buttons a {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.btn-login {
-  color: #2563eb;
-  background: white;
-  border: 1px solid #2563eb;
-}
-
-.btn-login:hover {
-  background: #eff6ff;
-}
-
-.btn-register {
-  color: white;
-  background: #2563eb;
-  border: 1px solid #2563eb;
-}
-
-.btn-register:hover {
-  background: #1d4ed8;
-}
-
-@media (max-width: 480px) {
-  .auth-buttons {
-    top: 12px;
-    right: 12px;
-    gap: 6px;
-  }
-
-  .auth-buttons a {
-    padding: 8px 11px;
-    font-size: 12px;
-  }
-}
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      
-     margin: 0;
-      font-family: Arial, sans-serif;
-      color: #203047;
-      line-height: 1.7;
-      background: #f5f8ff;
+    :root {
+      --blue: #155eef;
+      --navy: #102a56;
+      --light: #f3f7ff;
+      --text: #26364b;
+      --muted: #66758a;
+      --white: #ffffff;
     }
-    a { color: inherit; text-decoration: none; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+    }
+
+    a { text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
     header {
-      background: #ffffff;
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 2px 12px #153d6b12;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8edf5;
     }
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 15px 20px;
+
+    .navbar {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--navy);
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .logo span { color: var(--blue); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 23px;
       flex-wrap: wrap;
     }
-    .logo { font-size: 21px; font-weight: bold; color: #1458b5; }
-    .menu { display: flex; gap: 17px; flex-wrap: wrap; font-size: 14px; }
-    .menu a:hover { color: #1674df; }
-    .hero {
-      padding: 75px 20px;
-      background: linear-gradient(135deg, #e7f1ff, #ffffff);
-      text-align: center;
+
+    nav a {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
     }
-    .hero h1 {
-      color: #124d9d;
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.25;
-      margin: 0 0 18px;
-    }
-    .hero p { max-width: 650px; margin: 0 auto 25px; color: #50627b; }
+
+    nav a:hover { color: var(--blue); }
+
     .button {
       display: inline-block;
-      padding: 12px 22px;
-      border-radius: 9px;
-      background: #1769d2;
+      padding: 12px 21px;
+      border-radius: 10px;
+      background: var(--blue);
       color: white;
-      font-weight: bold;
-      margin: 5px;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+      transition: .2s;
     }
-    .button:hover { background: #0d4fa9; }
-    .button.light { background: white; color: #1769d2; border: 1px solid #1769d2; }
-    section { max-width: 1100px; margin: auto; padding: 55px 20px; }
-    .section-title { text-align: center; margin: 0 0 12px; color: #124d9d; font-size: 30px; }
-    .section-intro { text-align: center; color: #63738a; margin: 0 auto 30px; max-width: 680px; }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 5px 22px #183a6510;
-      border: 1px solid #e8eef8;
+
+    .button:hover {
+      background: #0848c7;
+      transform: translateY(-2px);
     }
-    .card h3 { color: #175bb2; margin-top: 0; }
-    .grade { font-size: 32px; font-weight: bold; color: #1769d2; }
-    .tag {
+
+    .hero {
+      padding: 85px 0;
+      background:
+        radial-gradient(circle at 85% 20%, #dce8ff 0, transparent 28%),
+        linear-gradient(135deg, #f5f8ff, #eaf2ff);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
       display: inline-block;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: #e8f2ff;
-      color: #175bb2;
-      font-size: 12px;
+      color: var(--blue);
+      background: #e0eaff;
+      border-radius: 30px;
+      padding: 6px 13px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-size: clamp(34px, 5vw, 53px);
+      line-height: 1.18;
+      margin-bottom: 22px;
+    }
+
+    h1 span { color: var(--blue); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 28px;
+      max-width: 590px;
+    }
+
+    .hero-note {
+      background: white;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 18px 55px #173b7415;
+      border: 1px solid #e4ebfa;
+    }
+
+    .math-symbol {
+      text-align: center;
+      font-size: 68px;
+      font-weight: 800;
+      color: var(--blue);
+      background: #edf3ff;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-note h3 {
+      color: var(--navy);
+      font-size: 22px;
       margin-bottom: 10px;
     }
-    .lesson-link { color: #1769d2; font-weight: bold; }
-    .lesson-link:hover { text-decoration: underline; }
-    .about {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px;
+
+    .hero-note p { font-size: 15px; margin: 0; }
+
+    section { padding: 76px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 42px;
     }
-    .contact { background: #eaf3ff; border-radius: 16px; padding: 30px; text-align: center; }
-    footer { background: #123b70; color: #ffffff; text-align: center; padding: 25px 20px; }
-    footer p { margin: 5px; }
-    @media (max-width: 720px) {
-      .grid { grid-template-columns: 1fr; }
-      nav { justify-content: center; }
-      .menu { justify-content: center; }
-      .hero { padding: 55px 18px; }
-      section { padding: 40px 18px; }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 36px);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .info-card {
+      padding: 26px;
+      background: white;
+      border: 1px solid #e8edf5;
+      border-radius: 16px;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #eaf1ff;
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    .info-card h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .info-card p { color: var(--muted); font-size: 15px; }
+
+    .courses { background: var(--light); }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #e4ebf6;
+      box-shadow: 0 8px 25px #173b7408;
+    }
+
+    .course-top {
+      padding: 25px;
+      background: linear-gradient(135deg, #155eef, #4e8bff);
+      color: white;
+    }
+
+    .course-top .grade {
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .course-top p { opacity: .9; }
+
+    .course-body { padding: 25px; }
+
+    .course-body ul {
+      list-style: none;
+      margin: 15px 0 22px;
+    }
+
+    .course-body li {
+      margin: 9px 0;
+      font-size: 14px;
+    }
+
+    .course-body li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 800;
+      margin-right: 9px;
+    }
+
+    .text-link {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .resource {
+      padding: 22px;
+      border: 1px solid #e5ebf4;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .resource h3 {
+      font-size: 17px;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .resource p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact { background: var(--navy); color: white; }
+
+    .contact .section-heading h2 { color: white; }
+    .contact .section-heading p { color: #d2def2; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .contact-info, .contact-form {
+      padding: 28px;
+      border-radius: 18px;
+      background: #ffffff0d;
+      border: 1px solid #ffffff22;
+    }
+
+    .contact-info h3, .contact-form h3 {
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .contact-info p { margin: 13px 0; color: #e0e9f9; }
+
+    .contact-form label {
+      display: block;
+      margin: 13px 0 5px;
+      font-size: 14px;
+    }
+
+    .contact-form input, .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d4ddec;
+      border-radius: 9px;
+      font: inherit;
+      background: white;
+      color: var(--text);
+    }
+
+    .contact-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-form .button { margin-top: 17px; width: 100%; }
+
+    .form-note {
+      margin-top: 12px;
+      color: #d2def2;
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      background: #f7f9fc;
+    }
+
+    @media (max-width: 760px) {
+      .navbar { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 12px 16px; }
+      .hero { padding: 55px 0; }
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .course-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
     }
   </style>
 </head>
+
 <body>
-
-<header>
-  <nav>
-    <a class="logo" href="#trang-chu">📘 TRUNG TÂM TOÁN HỌC</a>
-    <div class="menu">
-      <a href="#gioi-thieu">Giới thiệu</a>
-      <a href="#chuong-trinh">Chương trình học</a>
-      <a href="#tai-lieu">Tài liệu</a>
-      <a href="#lien-he">Liên hệ</a>
+  <header>
+    <div class="container navbar">
+      <a class="logo" href="#trang-chu">TRUNG TÂM <span>TOÁN HỌC</span></a>
+      <nav>
+        <a href="#trang-chu">Trang chủ</a>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#chuong-trinh">Chương trình học</a>
+        <a href="#tai-lieu">Tài liệu</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
     </div>
-    <div class="auth-buttons">
-  <a href="login.html" class="btn-login">Đăng nhập</a>
-  <a href="login.html" class="btn-register">Đăng ký</a>
-</div>
-  </nav>
-</header>
+  </header>
 
-<main>
-  <div class="hero" id="trang-chu">
-    <h1>Học Toán vững vàng<br>Chinh phục tương lai</h1>
-    <p>
-      Đồng hành cùng học sinh lớp 10, 11, 12.
-      Hệ thống kiến thức, rèn luyện kỹ năng giải bài tập
-      và chuẩn bị cho các kỳ thi quan trọng.
-    </p>
-    <a class="button" href="#chuong-trinh">Xem chương trình học</a>
-    <a class="button light" href="#tai-lieu">Xem tài liệu Toán</a>
-  </div>
+  <main>
+    <section class="hero" id="trang-chu">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">TOÁN HỌC • TƯ DUY • BỨT PHÁ</span>
+          <h1>Hiểu bản chất Toán học,<br><span>vững bước tương lai</span></h1>
+          <p>
+            Đồng hành cùng học sinh lớp 10, 11, 12 trên hành trình củng cố kiến thức,
+            rèn luyện tư duy và tự tin chinh phục các kỳ kiểm tra, kỳ thi quan trọng.
+          </p>
+          <a class="button" href="#lien-he">Đăng ký tư vấn →</a>
+        </div>
 
-  <section id="gioi-thieu">
-    <h2 class="section-title">Giới thiệu trung tâm</h2>
-    <p class="section-intro">
-      Nơi học sinh củng cố kiến thức, phát triển tư duy
-      và từng bước nâng cao kết quả học tập môn Toán.
-    </p>
-    <div class="about">
-      <h3>Phương pháp học tập</h3>
-      <ul>
-        <li>Ôn tập kiến thức nền tảng theo từng chuyên đề.</li>
-        <li>Hướng dẫn phương pháp giải bài tập từ cơ bản đến nâng cao.</li>
-        <li>Luyện tập, chữa bài và hệ thống các dạng toán thường gặp.</li>
-        <li>Ôn tập theo chương trình học và mục tiêu của từng học sinh.</li>
-      </ul>
-      <p><strong>Giáo viên phụ trách:</strong> [Điền tên giáo viên]</p>
-      <p><strong>Địa điểm:</strong> [Điền địa chỉ trung tâm]</p>
+        <div class="hero-note">
+          <div class="math-symbol">∑ x²</div>
+          <h3>Học chắc từng chuyên đề</h3>
+          <p>
+            Hệ thống kiến thức từ cơ bản đến nâng cao, luyện tập theo dạng bài
+            và hướng dẫn phương pháp giải phù hợp với từng học sinh.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gioi-thieu">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Học đúng phương pháp – Tiến bộ từng ngày</h2>
+          <p>
+            Chú trọng kiến thức nền tảng, thực hành thường xuyên và theo dõi
+            quá trình học tập của từng học sinh.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="info-card">
+            <div class="icon">📘</div>
+            <h3>Kiến thức vững chắc</h3>
+            <p>Hệ thống lý thuyết trọng tâm, giải thích rõ bản chất và phương pháp làm bài.</p>
+          </div>
+          <div class="info-card">
+            <div class="icon">✍️</div>
+            <h3>Luyện tập có hệ thống</h3>
+            <p>Bài tập từ cơ bản đến nâng cao, củng cố kiến thức sau mỗi chuyên đề.</p>
+          </div>
+          <div class="info-card">
+            <div class="icon">🎯</div>
+            <h3>Hướng đến mục tiêu</h3>
+            <p>Ôn tập theo mục tiêu học tập, kiểm tra định kỳ và điều chỉnh nội dung phù hợp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses" id="chuong-trinh">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Chương trình Toán THPT</h2>
+          <p>Lựa chọn lớp học phù hợp để xem định hướng nội dung và chuyên đề ôn tập.</p>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card">
+            <div class="course-top">
+              <div class="grade">TOÁN 10</div>
+              <p>Xây nền tảng kiến thức</p>
+            </div>
+            <div class="course-body">
+              <h3>Nội dung trọng tâm</h3>
+              <ul>
+                <li>Mệnh đề và tập hợp</li>
+                <li>Bất phương trình, hệ bất phương trình</li>
+                <li>Hàm số và đồ thị</li>
+                <li>Vectơ và tọa độ</li>
+                <li>Thống kê và xác suất cơ bản</li>
+              </ul>
+              <a class="text-link" href="#tai-lieu">Xem tài liệu →</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-top">
+              <div class="grade">TOÁN 11</div>
+              <p>Mở rộng và vận dụng</p>
+            </div>
+            <div class="course-body">
+              <h3>Nội dung trọng tâm</h3>
+              <ul>
+                <li>Hàm số lượng giác</li>
+                <li>Dãy số, cấp số cộng, cấp số nhân</li>
+                <li>Giới hạn và hàm số liên tục</li>
+                <li>Quan hệ song song, vuông góc</li>
+                <li>Xác suất và thống kê</li>
+              </ul>
+              <a class="text-link" href="#tai-lieu">Xem tài liệu →</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-top">
+              <div class="grade">TOÁN 12</div>
+              <p>Ôn thi và bứt phá</p>
+            </div>
+            <div class="course-body">
+              <h3>Nội dung trọng tâm</h3>
+              <ul>
+                <li>Ứng dụng đạo hàm</li>
+                <li>Nguyên hàm và tích phân</li>
+                <li>Vectơ và tọa độ trong không gian</li>
+                <li>Xác suất có điều kiện</li>
+                <li>Luyện đề và ôn thi tốt nghiệp THPT</li>
+              </ul>
+              <a class="text-link" href="#tai-lieu">Xem tài liệu →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tai-lieu">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Góc học tập và tài liệu</h2>
+          <p>Tài liệu được bổ sung theo từng lớp và từng chuyên đề.</p>
+        </div>
+
+        <div class="resources-grid">
+          <div class="resource">
+            <div class="icon">📗</div>
+            <div>
+              <h3>Toán lớp 10</h3>
+              <p>Bắt đầu với chuyên đề Mệnh đề và tập hợp.</p>
+              <a class="text-link" href="toan-lop-10/menh-de-tap-hop.html">Mở bài học mẫu →</a>
+            </div>
+          </div>
+          <div class="resource">
+            <div class="icon">📘</div>
+            <div>
+              <h3>Toán lớp 11</h3>
+              <p>Tổng hợp chuyên đề, bài tập và hướng dẫn giải.</p>
+              <a class="text-link" href="#lien-he">Hỏi về tài liệu →</a>
+            </div>
+          </div>
+          <div class="resource">
+            <div class="icon">📙</div>
+            <div>
+              <h3>Toán lớp 12</h3>
+              <p>Hệ thống kiến thức và nội dung luyện thi.</p>
+              <a class="text-link" href="#lien-he">Hỏi về tài liệu →</a>
+            </div>
+          </div>
+          <div class="resource">
+            <div class="icon">📝</div>
+            <div>
+              <h3>Bài tập và đề ôn tập</h3>
+              <p>Cập nhật bài tập theo từng giai đoạn học tập.</p>
+              <a class="text-link" href="#lien-he">Liên hệ nhận thông tin →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="lien-he">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Đăng ký tư vấn lớp học</h2>
+          <p>Phụ huynh và học sinh có thể liên hệ để tìm hiểu lịch học và chương trình phù hợp.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Thông tin trung tâm</h3>
+            <p>📍 Địa chỉ: [Bổ sung địa chỉ trung tâm]</p>
+            <p>☎️ Điện thoại: [Bổ sung số điện thoại]</p>
+            <p>🕒 Lịch học: [Bổ sung lịch học cụ thể]</p>
+            <p>📚 Môn học: Toán lớp 10, 11 và 12</p>
+          </div>
+
+          <form class="contact-form" id="registration-form">
+            <h3>Thông tin đăng ký</h3>
+
+            <label for="student-name">Họ và tên học sinh</label>
+            <input id="student-name" name="student-name" required placeholder="Nhập họ tên học sinh">
+
+            <label for="grade">Lớp đang học</label>
+            <select id="grade" name="grade" required>
+              <option value="">-- Chọn lớp --</option>
+              <option value="10">Lớp 10</option>
+              <option value="11">Lớp 11</option>
+              <option value="12">Lớp 12</option>
+            </select>
+
+            <label for="phone">Số điện thoại phụ huynh</label>
+            <input id="phone" name="phone" type="tel" required placeholder="Nhập số điện thoại">
+
+            <label for="message">Nội dung cần tư vấn</label>
+            <textarea id="message" name="message" placeholder="Ví dụ: muốn hỏi lịch học và học phí"></textarea>
+
+            <button class="button" type="submit">Gửi thông tin đăng ký</button>
+            <p class="form-note">
+              Lưu ý: Mẫu này hiện chưa kết nối hệ thống nhận thông tin. Vui lòng liên hệ trung tâm
+              qua số điện thoại sau khi thông tin liên hệ được bổ sung.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Trung tâm Toán học. Học chắc kiến thức – Tự tin vươn xa.
     </div>
-  </section>
+  </footer>
 
-  <section id="chuong-trinh">
-    <h2 class="section-title">Chương trình học</h2>
-    <p class="section-intro">
-      Lựa chọn khối lớp để xem nội dung học tập và tài liệu.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <span class="tag">Nền tảng</span>
-        <div class="grade">Lớp 10</div>
-        <h3>Củng cố kiến thức cơ bản</h3>
-        <p>Học theo chuyên đề, rèn kỹ năng biến đổi và giải toán.</p>
-        <a class="lesson-link" href="#tai-lieu-10">Xem tài liệu lớp 10 →</a>
-      </div>
-      <div class="card">
-        <span class="tag">Phát triển</span>
-        <div class="grade">Lớp 11</div>
-        <h3>Nâng cao tư duy toán học</h3>
-        <p>Hệ thống kiến thức, luyện tập các dạng bài theo từng chương.</p>
-        <a class="lesson-link" href="#tai-lieu-11">Xem tài liệu lớp 11 →</a>
-      </div>
-      <div class="card">
-        <span class="tag">Ôn thi</span>
-        <div class="grade">Lớp 12</div>
-        <h3>Ôn tập và luyện đề</h3>
-        <p>Ôn tập kiến thức lớp 12, luyện đề và chuẩn bị cho kỳ thi tốt nghiệp THPT.</p>
-        <a class="lesson-link" href="#tai-lieu-12">Xem tài liệu lớp 12 →</a>
-      </div>
-    </div>
-  </section>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <section id="tai-lieu">
-    <h2 class="section-title">Thư viện tài liệu Toán</h2>
-    <p class="section-intro">
-      Bài học, đề ôn tập và tài liệu dành cho học sinh.
-    </p>
-    <div class="grid">
-      <div class="card" id="tai-lieu-10">
-        <h3>📗 Tài liệu Toán lớp 10</h3>
-        <p><strong>Chuyên đề:</strong> Mệnh đề và tập hợp</p>
-        <p>Ôn tập lý thuyết, ví dụ và bài tập thực hành.</p>
-        <a class="lesson-link" href="toan-lop-10/menh-de-tap-hop.html">Mở bài học →</a>
-        <p><em>Các bài học mới sẽ được cập nhật tại đây.</em></p>
-      </div>
-      <div class="card" id="tai-lieu-11">
-        <h3>📘 Tài liệu Toán lớp 11</h3>
-        <p>Chuyên đề, bài tập và đề ôn tập theo chương trình học.</p>
-        <p><em>Đang cập nhật tài liệu.</em></p>
-      </div>
-      <div class="card" id="tai-lieu-12">
-        <h3>📙 Tài liệu Toán lớp 12</h3>
-        <p>Chuyên đề trọng tâm và tài liệu luyện thi tốt nghiệp THPT.</p>
-        <p><em>Đang cập nhật tài liệu.</em></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="lien-he">
-    <div class="contact">
-      <h2 class="section-title">Liên hệ với trung tâm</h2>
-      <p>Liên hệ để tìm hiểu chương trình học và lịch học phù hợp.</p>
-      <p><strong>Địa chỉ:</strong> [Điền địa chỉ]</p>
-      <p><strong>Điện thoại:</strong> [Điền số điện thoại]</p>
-      <p><strong>Facebook:</strong> [Điền đường dẫn trang Facebook]</p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p><strong>TRUNG TÂM TOÁN HỌC</strong></p>
-  <p>Đồng hành cùng học sinh lớp 10, 11, 12</p>
-  <p>© 2026 - Website trung tâm</p>
-</footer>
-
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Mẫu đăng ký chưa được kết nối để gửi thông tin. Vui lòng liên hệ trung tâm qua số điện thoại trên website.");
+    });
+  </script>
 </body>
 </html>
