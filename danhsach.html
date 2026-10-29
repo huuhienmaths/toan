@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cây Thư Mục Giao Diện Đẹp</title>
+    <style>
+        .tree {
+            --spacing: 1.5rem;
+            --radius: 5px;
+            padding-left: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .tree ul {
+            margin-left: calc(var(--spacing) - var(--radius));
+            padding-left: 0;
+            list-style: none;
+        }
+        .tree li {
+            display: block;
+            position: relative;
+            padding-left: calc(var(--spacing) + 5px);
+            margin: 5px 0;
+        }
+        /* Tạo đường thẳng dọc */
+        .tree ul li::before {
+            content: "";
+            position: absolute;
+            top: calc(var(--spacing) / -2);
+            left: 0;
+            border-left: 1px solid #ccc;
+            width: 1px;
+            height: calc(var(--spacing) + 8px);
+        }
+        .tree ul li:last-child::before {
+            height: calc(var(--spacing) / 2 + 5px);
+        }
+        /* Tạo đường thẳng ngang gạch vào item */
+        .tree ul li::after {
+            content: "";
+            position: absolute;
+            top: calc(var(--spacing) / 2 + 3px);
+            left: 0;
+            border-top: 1px solid #ccc;
+            width: var(--spacing);
+            height: 1px;
+        }
+        .folder { font-weight: 600; color: #f5b041; cursor: pointer; }
+        .file { color: #566573; }
+    </style>
+</head>
+<body>
+
+    <h2>Giao diện cây thư mục</h2>
+    <div class="tree">
+        <ul>
+            <li><span class="folder">📁 MyWebsite</span>
+                <ul>
+                    <li><span class="folder">📁 assets</span>
+                        <ul>
+                            <li><span class="folder">📁 css</span>
+                                <ul>
+                                    <li><span class="file">📄 main.css</span></li>
+                                    <li><span class="file">📄 responsive.css</span></li>
+                                </ul>
+                            </li>
+                            <li><span class="folder">📁 images</span>
+                                <ul>
+                                    <li><span class="file">🖼️ logo.svg</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span class="file">📄 index.html</span></li>
+                    <li><span class="file">📄 about.html</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
 
