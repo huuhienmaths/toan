@@ -2,13 +2,14 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Cây Thư Mục Giao Diện Đẹp</title>
+    <title>Cây Thư Mục Click Đóng Mở</title>
     <style>
         .tree {
             --spacing: 1.5rem;
             --radius: 5px;
             padding-left: 10px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none; /* Ngăn bôi đen văn bản khi click nhanh */
         }
         .tree ul {
             margin-left: calc(var(--spacing) - var(--radius));
@@ -34,7 +35,7 @@
         .tree ul li:last-child::before {
             height: calc(var(--spacing) / 2 + 5px);
         }
-        /* Tạo đường thẳng ngang gạch vào item */
+        /* Tạo đường thẳng ngang */
         .tree ul li::after {
             content: "";
             position: absolute;
@@ -44,27 +45,41 @@
             width: var(--spacing);
             height: 1px;
         }
+
+        /* Định dạng Folder và File */
         .folder { font-weight: 600; color: #f5b041; cursor: pointer; }
         .file { color: #566573; }
+
+        /* Ẩn các thư mục con mặc định khi bị đóng */
+        .nested {
+            display: none;
+        }
+        /* Hiển thị lại khi có class active */
+        .active {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Giao diện cây thư mục</h2>
+    <h2>Cây thư mục tương tác (Click Folder)</h2>
     <div class="tree">
         <ul>
-            <li><span class="folder">📁 MyWebsite</span>
-                <ul>
-                    <li><span class="folder">📁 assets</span>
-                        <ul>
-                            <li><span class="folder">📁 css</span>
-                                <ul>
+            <li>
+                <!-- Mặc định icon là 📁 -->
+                <span class="folder" data-opened="false">📁 MyWebsite</span>
+                <!-- Thêm class "nested" để ẩn danh sách con ban đầu -->
+                <ul class="nested">
+                    <li><span class="folder" data-opened="false">📁 assets</span>
+                        <ul class="nested">
+                            <li><span class="folder" data-opened="false">📁 css</span>
+                                <ul class="nested">
                                     <li><span class="file">📄 main.css</span></li>
                                     <li><span class="file">📄 responsive.css</span></li>
                                 </ul>
                             </li>
-                            <li><span class="folder">📁 images</span>
-                                <ul>
+                            <li><span class="folder" data-opened="false">📁 images</span>
+                                <ul class="nested">
                                     <li><span class="file">🖼️ logo.svg</span></li>
                                 </ul>
                             </li>
@@ -77,6 +92,32 @@
         </ul>
     </div>
 
+    <!-- Đoạn JavaScript xử lý hành động click -->
+    <script>
+        document.querySelector('.tree').addEventListener('click', function(e) {
+            // Kiểm tra xem phần tử được click có phải là folder không
+            if (e.target.classList.contains('folder')) {
+                
+                // Tìm danh sách ul (thư mục con) đứng ngay sau folder được click
+                const childList = e.target.parentElement.querySelector('.nested');
+                
+                if (childList) {
+                    // Bật/tắt class 'active' để ẩn/hiển thị
+                    childList.classList.toggle('active');
+                    
+                    // Đổi icon thư mục dựa trên trạng thái đóng/mở
+                    const isOpened = e.target.getAttribute('data-opened') === 'true';
+                    if (isOpened) {
+                        e.target.innerHTML = e.target.innerHTML.replace('📂', '📁');
+                        e.target.setAttribute('data-opened', 'false');
+                    } else {
+                        e.target.innerHTML = e.target.innerHTML.replace('📁', '📂');
+                        e.target.setAttribute('data-opened', 'true');
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
-
